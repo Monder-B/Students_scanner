@@ -180,7 +180,7 @@
     <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     <script>
         // Configuration
-        const WORKER_URL = 'https://muddy-thunder-2a87.mmondeer346.workers.dev/'; // Replace with your worker URL
+        const WORKER_URL = 'https://muddy-thunder-2a87.mmondeer346.workers.dev'; // Replace with your worker URL
         
         let html5QrCode;
         let isScanning = true;
@@ -220,7 +220,7 @@
             
             try {
                 // Call verification endpoint
-                const response = await fetch(`${WORKER_URL}?code=${encodeURIComponent(decodedText)}`);
+                const response = await fetch(`${WORKER_URL}/verify?code=${encodeURIComponent(decodedText)}`);
                 const data = await response.json();
                 
                 // Display result based on verification

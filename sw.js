@@ -1,7 +1,9 @@
-const CACHE_NAME = 'qr-scanner-v1';
+const CACHE_NAME = 'qr-scanner-v2';
 const urlsToCache = [
-  '/scanner.html',
-  '/manifest.json',
+  './',
+  './index.html',
+  './manifest.json',
+  './sw.js',
   'https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js'
 ];
 
