@@ -226,8 +226,12 @@
                 // Display result based on verification
                 if (data.status === 'VALID') {
                     showResult('valid', decodedText);
-                } else {
+                } else if (data.status === 'ALREADY_TODAY'){
+                    showResult('already', decodedText);
+                }else if(data.status === 'INVALID'){
                     showResult('invalid', decodedText);
+                } else {
+                    showResult('error', decodedText,data.message);
                 }
             } catch (error) {
                 console.error("Verification error:", error);
@@ -267,7 +271,13 @@
                 resultTitle.textContent = 'Invalid Code';
                 resultMessage.textContent = 'This QR code is not valid or has expired.';
                 document.querySelector('.status').textContent = 'Verification failed';
-            } else if (type === 'error') {
+            }else if (type === 'already') {
+                body.classList.add('valid');
+                resultIcon.textContent = '⏱';
+                resultTitle.textContent = 'Already Today';
+                resultMessage.textContent = 'This student already checked in today.';
+                document.querySelector('.status').textContent = 'Already checked today';
+            }else if (type === 'error') {
                 body.classList.add('invalid');
                 resultIcon.textContent = '⚠';
                 resultTitle.textContent = 'Verification Error';
